@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap');
+
+#todo-list {
+}
+
+#todo-list form {
+    margin: 10% 0 5% 0;
+    justify-content: center;
+    width: 100%;
+
+    display: grid;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#todo-list label {
+    margin-left: 0%;
+    font-weight: bolder;
+    font-size: 32px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#todo-list label, 
+#todo-list input, 
+#todo-list button {
+    margin-top: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#todo-list ul {
+    margin-left: 12.5%;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto;
+    justify-content: space-evenly;
+    transition: all 0.2s linear;
+}
+
+#todo-list p {
+    font-weight: bolder;
+    font-size: 32px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.todo-container {
+    margin-left: 5%;
+    margin-right: 5%;
+    transition: all 0.2s linear;
+}
+
+#todo-list .todo-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+    text-align: center;
+    height: 50px;
+    max-width: 100%;
+    border: 1px solid black;
+
+    font-family: 'Montserrat', sans-serif;
+
+    overflow: hidden;;
+}
+
+.todo,
+.doing,
+.done {
+    list-style-type: none;
+    justify-self: center;
+}
+
+.todo-wrapper button {
+    pointer-events: all;
+}

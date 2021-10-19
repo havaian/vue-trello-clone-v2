@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Vue.js Learning</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    
+    <div id="todo-list">
+        <form v-on:submit.prevent="addTodo">
+          <label for="new-todo">Add a todo</label>
+          <input v-model="newTodoText" id="new-todo" placeholder="E.g. Git Commit"/>
+          <button>Add</button>
+        </form>
+        <ul>
+            <div class="todo-container" draggable="false">
+                <p>To Do</p>
+                <template v-for="(todo, index) in todos" v-for="(todo, index) in app.todos" class="todo">
+                    <div id="todo-wrapper" class="todo-wrapper" draggable="true">
+                        <todo-item :id="todo.id" :key="todo.id" :title="todo.title" :class="todo.class" @click="removeTodo(this)">
+                            
+                        </todo-item>
+                    </div>
+                </template>
+            </div>
+            <div class="todo-container" draggable="false">
+                <p>Doing</p>
+                <template v-for="(todo, index) in doings" v-for="(todo, index) in app.todos" class="doing">
+                    <div id="todo-wrapper" class="todo-wrapper" draggable="true"> 
+                        <todo-item :id="todo.id" :key="todo.id" :title="todo.title" :class="todo.class"  @click="removeTodo(this)">
+                            
+                        </todo-item>
+                    </div>
+                </template>
+            </div>
+            <div class="todo-container" draggable="false">
+                <p>Done</p>
+                <template v-for="(todo, index) in dones" v-for="(todo, index) in app.todos" class="done">
+                    <div id="todo-wrapper" class="todo-wrapper" draggable="true">
+                        <todo-item :id="todo.id" :key="todo.id" :title="todo.title" :class="todo.class"  @click="removeTodo(this)">
+                            
+                        </todo-item>
+                    </div>
+                </template>
+            </div>
+        </ul>
+      </div>
+
+</body>
+
+<script src="./app.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.bundle.js"></script>
+
+<script>
+
+    let dropzones = document.querySelectorAll('.todo-container');
+    
+    let droppable = new Draggable.Droppable(
+        dropzones,
+        {
+            draggable: '.todo-wrapper',
+            dropzone:  '.todo-container',
+            mirror:    { constrainDimensions: true }
+        }
+    );
+
+    droppable.on('droppable:stop', () => {
+        for (let x = 0; x < dropzones.length; x++) {
+            dropzones[x].classList.remove('draggable-dropzone--occupied')
+        }   
+    });
+
+</script>
+
+</html>
